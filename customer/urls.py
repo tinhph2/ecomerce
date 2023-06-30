@@ -5,5 +5,5 @@ from customer import views
 urlpatterns = [
     path('add', views.add_customer, name="add_customer"),
     path('list/', views.list_customer, name='list_customer'),
-    
+    path('add_new_custom/', views.add_new_customer, name='add_new_customer'),
 ]
