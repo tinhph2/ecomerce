@@ -2,7 +2,40 @@
 {% load static %}
 {% block content %}
 
-<h1>list customer</h1>
+<div class="container">
+    <div class="mb-3" style="
+    font-size: 15px;
+    text-align: center;
+  
+    margin-top: 30px;
+">
+       <h1 style="
+       font-size: 20px;
+   ">DANH SÁCH</h1>
+      </div>
+   
+      <table class="table table-hover">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Họ tên</th>
+              <th scope="col">Số điện thoại</th>
+              <th scope="col">Địa chỉ</th>
+              <th scope="col">Hành động</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+              <td><a href="#">Sửa</a>|<a href="#">Xóa</a></td>
+            </tr>
+            
+          </tbody>
+      </table>
+</div>
 
 
 {% endblock %}
