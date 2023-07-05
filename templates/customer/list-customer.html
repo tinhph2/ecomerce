@@ -1,42 +1,62 @@
-{% extends "base.html" %} 
-{% load static %}
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <div class="container">
-    <div class="mb-3" style="
-    font-size: 15px;
-    text-align: center;
-  
-    margin-top: 30px;
-">
-       <h1 style="
-       font-size: 20px;
-   ">DANH SÁCH</h1>
-      </div>
-   
-      <table class="table table-hover">
-        <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Họ tên</th>
-              <th scope="col">Số điện thoại</th>
-              <th scope="col">Địa chỉ</th>
-              <th scope="col">Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for customer in list_customer%}
-            <tr>
-              <th scope="row">{{customer.id}}</th>
-              <td>{{customer.name}}</td>
-              <td>{{customer.phone}}</td>
-              <td>{{customer.address}}</td>
-              <td><a href="{%url 'update_customer' customer.id %}">Sửa</a>|<a href="#">Xóa</a></td>
-            </tr>
-            {% endfor %}
-          </tbody>
-      </table>
+  <div
+    class="mb-3"
+    style="
+      font-size: 15px;
+      text-align: center;
+
+      margin-top: 30px;
+    "
+  >
+    <h1 style="font-size: 20px">DANH SÁCH</h1>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Họ tên</th>
+        <th scope="col">Số điện thoại</th>
+        <th scope="col">Địa chỉ</th>
+        <th scope="col">Hành động</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for customer in list_customer%}
+      <tr>
+        <th scope="row">{{customer.id}}</th>
+        <td>{{customer.name}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.address}}</td>
+        <td>
+          <a href="{%url 'update_customer' customer.id %}">Sửa</a>|<a
+            onclick="del_customer('{{customer.id}}')"
+            href="#"
+            >Xóa</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 
-
+<script>
+  function del_customer(id_customer) {
+    $.ajax({
+      type: "GET",
+      url: "/customer/delete_customer",
+      data: {
+        customer_id: id_customer,
+      },
+      success: function (parsedData) {
+        console.log(parsedData)
+        alert(parsedData["mess"])
+        location.reload();
+      },
+    });
+  }
+</script>
 {% endblock %}

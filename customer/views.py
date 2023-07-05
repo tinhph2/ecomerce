@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Customer
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 # Create your views here.
 def list_customer(request):
     list_customer = Customer.objects.all()
@@ -49,4 +50,15 @@ def update_process(request):
         context = {
             'list_customer':list_customer
         }
-        return render(request,"customer/list-customer.html",context) 
+        return render(request,"customer/list-customer.html",context)
+
+
+def delete_customer(request):
+    if request.method == 'GET':
+        customer_id = request.GET['customer_id']
+        customer = Customer.objects.get(id = customer_id)
+        customer.delete()
+        context = {
+            'mess' :"Xóa thành công"
+        }
+    return JsonResponse(context)
