@@ -14,4 +14,10 @@ def add_new_customer(request):
         rq_address = request.POST.get("address")
         data = Customer(name = rq_name, phone = rq_phone, address = rq_address)
         data.save()
-    return render(request,"customer/list-customer.html") 
+        
+        list_customer = Customer.objects.all()
+        context = {
+            'list_customer':list_customer
+        }
+
+    return render(request,"customer/list-customer.html",context) 

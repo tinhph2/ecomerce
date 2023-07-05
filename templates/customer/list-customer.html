@@ -25,14 +25,15 @@
             </tr>
           </thead>
           <tbody>
+            {% for customer in list_customer%}
             <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <th scope="row">{{customer.id}}</th>
+              <td>{{customer.name}}</td>
+              <td>{{customer.phone}}</td>
+              <td>{{customer.address}}</td>
               <td><a href="#">Sửa</a>|<a href="#">Xóa</a></td>
             </tr>
-            
+            {% endfor %}
           </tbody>
       </table>
 </div>
