@@ -31,7 +31,7 @@
               <td>{{customer.name}}</td>
               <td>{{customer.phone}}</td>
               <td>{{customer.address}}</td>
-              <td><a href="#">Sửa</a>|<a href="#">Xóa</a></td>
+              <td><a href="{%url 'update_customer' customer.id %}">Sửa</a>|<a href="#">Xóa</a></td>
             </tr>
             {% endfor %}
           </tbody>
