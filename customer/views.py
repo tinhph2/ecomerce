@@ -10,7 +10,6 @@ def add_customer(request):
 def add_new_customer(request):
     if request.method == "POST":
         rq_name = request.POST.get("name")
-        print("-------"+rq_name)
         rq_phone = request.POST.get("phone")
         rq_address = request.POST.get("address")
         data = Customer(name = rq_name, phone = rq_phone, address = rq_address)
