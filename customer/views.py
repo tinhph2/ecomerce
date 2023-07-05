@@ -2,13 +2,16 @@ from django.shortcuts import render
 from .models import Customer
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 # Create your views here.
 def list_customer(request):
     list_customer = Customer.objects.all()
-    context = {
-        'list_customer':list_customer
-    }
-    return render(request,"customer/list-customer.html",context) 
+    paginator = Paginator(list_customer,5)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+   
+    return render(request,"customer/list-customer.html",{"page_obj": page_obj}) 
 
 def add_customer(request):
     return render(request,"customer/add-customer.html") 
