@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Customer
+from django.shortcuts import get_object_or_404
 # Create your views here.
 def list_customer(request):
     list_customer = Customer.objects.all()
@@ -29,5 +30,8 @@ def add_new_customer(request):
 
 def update_customer(request,customer_id):
     print("customer.id"+str(customer_id))
-
-    return render(request,"customer/update-customer.html") 
+    customer = get_object_or_404(Customer, id = customer_id)
+    context = {
+        'customer' : customer
+    }
+    return render(request,"customer/update-customer.html",context) 
