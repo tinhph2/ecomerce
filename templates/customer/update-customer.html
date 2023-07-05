@@ -12,9 +12,10 @@
   >
     <h1 style="font-size: 20px">CẬP NHẬT THÔNG TIN</h1>
   </div>
-  <form action="" method="post">
+  <form  action="{% url 'update_process' %}" method="post">
     {% csrf_token %}
     <div class="mb-3">
+      <input type="hidden" id="customer_id" name="customer_id" value="{{customer.id}}">
       <label for="exampleFormControlInput1" class="form-label">Họ tên</label>
       <input
         type="text"

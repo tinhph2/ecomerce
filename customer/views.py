@@ -29,9 +29,24 @@ def add_new_customer(request):
 
 
 def update_customer(request,customer_id):
-    print("customer.id"+str(customer_id))
+
     customer = get_object_or_404(Customer, id = customer_id)
     context = {
         'customer' : customer
     }
+
     return render(request,"customer/update-customer.html",context) 
+
+def update_process(request):
+
+    if request.method == "POST":
+        rq_id = request.POST.get("customer_id")
+        rq_name = request.POST.get("name")
+        rq_phone = request.POST.get("phone")
+        rq_address = request.POST.get("address")
+        Customer.objects.filter(id=rq_id).update(name = rq_name, phone = rq_phone, address = rq_address)
+        list_customer = Customer.objects.all()
+        context = {
+            'list_customer':list_customer
+        }
+        return render(request,"customer/list-customer.html",context) 
