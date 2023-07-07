@@ -11,9 +11,10 @@ def upload_app(request):
     return render(request,"upload/index.html",context) 
 
 def process_upload(request):
-    if request.method == "POST":
-        rq_author = request.POST.get("inputAuthor")
-        rq_inputTitle = request.POST.get("inputTitle")
-        rq_inputFile = request.POST.get("inputFile")
-        rq_inputDocument = request.POST.get("inputDocument")
-    return render(request,"upload/index.html") 
+    if request.method == 'POST':
+        form = CourseForm (request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = BookForm()
+    return render(request, 'upload/index.html', {'form': form})
