@@ -10,11 +10,12 @@ def upload_app(request):
     }
     return render(request,"upload/index.html",context) 
 
-def process_upload(request):
+def upload(request):
+    print("---------------")
     if request.method == 'POST':
         form = CourseForm (request.POST, request.FILES)
         if form.is_valid():
             form.save()
     else:
-        form = BookForm()
+        form = CourseForm()
     return render(request, 'upload/index.html', {'form': form})
