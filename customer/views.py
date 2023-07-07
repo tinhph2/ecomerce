@@ -24,12 +24,19 @@ def add_new_customer(request):
         data = Customer(name = rq_name, phone = rq_phone, address = rq_address)
         data.save()
 
-        list_customer = Customer.objects.all()
-        context = {
-            'list_customer':list_customer
-        }
+    list_customer = Customer.objects.all()
+    paginator = Paginator(list_customer,5)  # Show 25 contacts per page.
 
-    return render(request,"customer/list-customer.html",context) 
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+   
+    return render(request,"customer/list-customer.html",{"page_obj": page_obj}) 
+    #     list_customer = Customer.objects.all()
+    #     context = {
+    #         'list_customer':list_customer
+    #     }
+
+    # return render(request,"customer/list-customer.html",context) 
 
 
 def update_customer(request,customer_id):
