@@ -1,11 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Upload file</h1>
-</body>
-</html>
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container-upload" style="margin-top: 30px;">
+  <form>
+    <div class="row mb-3" style="text-align: center;">
+        <h1>Upload File </h1>
+      </div>
+    <div class="row mb-3">
+      <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputAuthor" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputTitle" />
+      </div>
+    </div>
+    <div class="row mb-3">
+        <label for="inputFile" class="col-sm-2 col-form-label">File</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="file" id="inputFile" />
+        </div>
+      </div>
+   
+
+    <button type="submit" class="btn btn-primary">Upload file</button>
+  </form>
+  {% endblock %}
+</div>
