@@ -6,3 +6,4 @@ class Course(models.Model):
     author = models.CharField(max_length=250)
     title = models.CharField(max_length=250)
     image = models.ImageField(upload_to='images/')
+    document = models.FileField(upload_to='uploads/')
