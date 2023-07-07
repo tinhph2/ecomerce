@@ -1,35 +1,11 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+{% load crispy_forms_tags %}
 <div class="container-upload" style="margin-top: 30px;">
-  <form action="{% url 'process_upload' %}" method="POST">
-    <div class="row mb-3" style="text-align: center;">
-        <h1>Upload File </h1>
-      </div>
-    <div class="row mb-3">
-      <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputAuthor" name = "inputAuthor"/>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputTitle" name="inputTitle" />
-      </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputFile" class="col-sm-2 col-form-label">File</label>
-        <div class="col-sm-10">
-            <input class="form-control" type="file" id="inputFile" name="inputFile"/>
-        </div>
-      </div>
-      <div class="row mb-3">
-        <label for="inputFile" class="col-sm-2 col-form-label">Document</label>
-        <div class="col-sm-10">
-            <input class="form-control" type="file" id="inputDocument" name="inputDocument"/>
-        </div>
-      </div>
-
-    <button type="submit" class="btn btn-primary">Upload file</button>
+  <h2>Upload </h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="btn btn-primary">Upload</button>
   </form>
   {% endblock %}
 </div>
