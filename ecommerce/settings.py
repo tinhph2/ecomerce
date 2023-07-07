@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'store',
     'demo',
     'customer',
+    'uploadapp'
 ]
 
 MIDDLEWARE = [
