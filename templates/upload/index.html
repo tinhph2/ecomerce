@@ -1,25 +1,25 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <div class="container-upload" style="margin-top: 30px;">
-  <form>
+  <form action="{% url 'process_upload' %}" method="POST">
     <div class="row mb-3" style="text-align: center;">
         <h1>Upload File </h1>
       </div>
     <div class="row mb-3">
       <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputAuthor" />
+        <input type="text" class="form-control" id="inputAuthor" name = "inputAuthor"/>
       </div>
     </div>
     <div class="row mb-3">
       <label for="inputTitle" class="col-sm-2 col-form-label">Title</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" id="inputTitle" />
+        <input type="text" class="form-control" id="inputTitle" name="inputTitle" />
       </div>
     </div>
     <div class="row mb-3">
         <label for="inputFile" class="col-sm-2 col-form-label">File</label>
         <div class="col-sm-10">
-            <input class="form-control" type="file" id="inputFile" />
+            <input class="form-control" type="file" id="inputFile" name="inputFile"/>
         </div>
       </div>
    

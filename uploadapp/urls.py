@@ -4,5 +4,5 @@ from uploadapp import views
 
 urlpatterns = [
     path('', views.upload_app, name="upload_app"),
-    
+    path('uploadfile/', views.process_upload, name="process_upload"),
 ]
