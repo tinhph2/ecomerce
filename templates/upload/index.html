@@ -4,7 +4,9 @@
   <h2>Upload </h2>
   <form method="post" action="{% url 'upload' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p}}
+    <table>
+    {{ form.as_table }}
+    </table>
     <button type="submit" class="btn btn-primary">Upload</button>
   </form>
   {% endblock %}
