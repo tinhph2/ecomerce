@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from store.models import Product
 from .cart import Cart
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
 # Create your views here.
 def cart_summary(request):
     return render(request, 'cart/cart-summary.html')
