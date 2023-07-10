@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'demo',
     'customer',
     'uploadapp',
+    'cart'
     
 ]
 
