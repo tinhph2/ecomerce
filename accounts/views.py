@@ -8,10 +8,10 @@ def process_login(request):
     if request.method == 'POST':
         username = request.POST['userName']
         password = request.POST['password']
-        # user = auth.authenticate(username=username, password=password)
-        # if user is not None:
-        #     auth.login(request, user)
-        #     if (request.user.is_authenticated):
-        #         return redirect('customer/list')
-        # else:
-        #     return redirect('accounts/login')
+        user = auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            if (request.user.is_authenticated):
+                return redirect('customer')
+        else:
+            return redirect('login')
