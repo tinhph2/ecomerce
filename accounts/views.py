@@ -12,6 +12,6 @@ def process_login(request):
         if user is not None:
             auth.login(request, user)
             if (request.user.is_authenticated):
-                return redirect('customer')
+                return redirect('customer/')
         else:
             return redirect('login')
