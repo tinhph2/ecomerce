@@ -3,7 +3,11 @@ from .models import Customer
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+@login_required(login_url = "login")
+
 def list_customer(request):
     list_customer = Customer.objects.all()
     paginator = Paginator(list_customer,5)  # Show 25 contacts per page.
@@ -12,7 +16,7 @@ def list_customer(request):
     page_obj = paginator.get_page(page_number)
    
     return render(request,"customer/list-customer.html",{"page_obj": page_obj}) 
-
+@login_required(login_url = "login")
 def add_customer(request):
     return render(request,"customer/add-customer.html") 
 

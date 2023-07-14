@@ -15,3 +15,8 @@ def process_login(request):
                 return redirect('/customer/')
         else:
             return redirect('login')
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        
