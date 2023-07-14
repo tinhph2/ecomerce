@@ -17,6 +17,6 @@ def process_login(request):
             return redirect('login')
 
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
+    auth.logout(request)
+    return render(request,"account/login.html") 
         
