@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+from django.http import HttpResponse
+import csv
 
 @login_required(login_url = "login")
 
@@ -76,3 +78,17 @@ def delete_customer(request):
             'mess' :"Xóa thành công"
         }
     return JsonResponse(context)
+
+
+def export_customer_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="customer.csv"'
+
+    writer = csv.writer(response)
+    writer.writerow(['id','name', 'phone', 'address'])
+
+    users = Customer.objects.all().values_list('id','name', 'phone', 'address')
+    for user in users:
+        writer.writerow(user)
+
+    return response
